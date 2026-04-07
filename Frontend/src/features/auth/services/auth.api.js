@@ -22,7 +22,7 @@ export async function login ({email,password}){
       const reponse= await api.post('/api/auth/login',{
         email,password
     },)
-    return reponse.data
+    return reponse.data 
  }catch(err){
     console.log(err)
  } 

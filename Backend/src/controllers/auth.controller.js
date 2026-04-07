@@ -89,8 +89,7 @@ async function loginUsercontroller(req,res){
             message:"Invalid email and Password"
         })
     }
-
-    res.cookie("token",token)
+    
     res.status(200).json({
         message:"user login successfully"
     })
