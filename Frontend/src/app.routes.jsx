@@ -5,6 +5,7 @@ import App from "./App";
 import Protected from "./features/auth/components/Protected"
 
 
+
 export const router = createBrowserRouter([
     {
         path:"/login",

@@ -64,53 +64,55 @@ res.status(201).json({
  * @access public
  */
 
-module.exports={registerUserController,loginUsercontroller,logoutusercontroller,getMeContoller}
+module.exports={registerUserController,loginUserController,logoutusercontroller,getMeController}
 
-async function loginUsercontroller(req,res){
+async function loginUserController(req, res) { // ye padhnaa h !!!!!!!!!!!
+    try {
+        const { email, password } = req.body
 
-    const{email,password}=req.body
-    const user = await userModel.findOne({email})
+        const user = await userModel.findOne({ email })
 
+        if (!user) {
+            return res.status(400).json({
+                message: "Invalid email and password"
+            })
+        }
 
-    if(!user){
-        return res.status(400).json({
-            message:"Invalid email and password"
-        })    
-    }
+        const isPasswordValid = await bcrypt.compare(password, user.password)
 
-    const isPassowrdValid= await bcrypt.compare(password, user.password) // ek password--> jo request ki body se aayega 
- // ek password--> jo request ki body se aayega 
-    // user.password --> jo password database se aayega 
+        if (!isPasswordValid) {
+            return res.status(400).json({
+                message: "Invalid email and password"
+            })
+        }
 
-    
+        // ✅ Create token BEFORE sending response
+        const token = jwt.sign(
+            { id: user._id, username: user.username },
+            process.env.JWT_SECRET,
+            { expiresIn: "1d" }
+        )
 
-    if(!isPassowrdValid){
-        return res.status(400).json({
-            message:"Invalid email and Password"
+        // ✅ Set cookie BEFORE sending response
+        res.cookie("token", token, {
+            httpOnly: true,
+            secure: process.env.NODE_ENV === "production",
+            sameSite: "strict"
         })
-    }
-    
-    res.status(200).json({
-        message:"user login successfully"
-    })
-    
-    
-    const token =jwt.sign(
-    {id:user._id,username:user.username},
-    process.env.JWT_SECRET,
-    {expiresIn:"1d"}
-)
 
-res.cookie("token",token)
-res.status(200).json({
-    message:"user loggedIn successfully",
-    user:{
-        id:user._id,
-        username:user.username,
-        email:user.email
-    }
-})
+        // ✅ Only ONE response at the very end
+        return res.status(200).json({
+            message: "User logged in successfully",
+            user: {
+                id: user._id,
+                username: user.username,
+                email: user.email
+            }
+        })
 
+    } catch (error) {
+        return res.status(500).json({ message: "Internal server error", error: error.message })
+    }
 }
 /**
  * @name logoutusercontroller
@@ -133,22 +135,30 @@ async function logoutusercontroller(req,res){
 /**
  * @name getMeContoller
  * @description get the current logged in user details 
- * @access private
+ * @access public 
  * 
  */
 
-async function getMeContoller(req,res){
-    const user = await userModel.findById(req.user.id) // user.id --> decoded 
-    res.status(200).json({
-        message:"user details fetched successfully",
-        user:{
-            id: user._id,
-            username:user.username,
-            email:user.email
+async function getMeController(req, res) {
+    try {
+        const user = await userModel.findById(req.user.id);
+
+        if (!user) {
+            return res.status(404).json({ message: "User not found" });
         }
 
-
-    })
+        res.status(200).json({
+            message: "User details fetched successfully",
+            user: {
+                id: user._id,
+                username: user.username,
+                email: user.email
+            }
+        });
+    } catch (error) {
+        res.status(500).json({ message: "Internal server error", error: error.message });
+    }
 }
+
 
 

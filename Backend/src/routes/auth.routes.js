@@ -16,7 +16,7 @@ authRouter.post("/register",authController.registerUserController)
  * @description login username with email and password
  * @access public
  */
-authRouter.post("/login",authController.loginUsercontroller)
+authRouter.post("/login",authController.loginUserController)
 /**
  * @route get // api/auth/logout
  * @description clear cookie,from user cookie and the token is blaclist
@@ -31,7 +31,7 @@ authRouter.get("/logout",authController.logoutusercontroller)
  * @access private
  */
 
-authRouter.get("/get-me",authMiddleware.authUser,authController.getMeContoller)
+authRouter.get("/get-me",authMiddleware.authUser,authController.getMeController)
 
 
 
