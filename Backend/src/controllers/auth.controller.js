@@ -64,7 +64,7 @@ res.status(201).json({
  * @access public
  */
 
-module.exports={registerUserController,loginUserController,logoutusercontroller,getMeController}
+
 
 async function loginUserController(req, res) { // ye padhnaa h !!!!!!!!!!!
     try {
@@ -159,6 +159,6 @@ async function getMeController(req, res) {
         res.status(500).json({ message: "Internal server error", error: error.message });
     }
 }
-
+module.exports={registerUserController,loginUserController,logoutusercontroller,getMeController}
 
 
