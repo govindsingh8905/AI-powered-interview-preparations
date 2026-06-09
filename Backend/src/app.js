@@ -9,21 +9,10 @@ const app = express()
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 app.use(cookieParser())
-const allowedOrigins = [
-    "http://localhost:5173",
-    "https://crackinterviewai.netlify.app",
-    "https://ai-powered-interview-preparations.netlify.app"
-]
-
 app.use(cors({
-    origin: (origin, callback) => {
-        if (!origin || allowedOrigins.includes(origin)) {
-            callback(null, true)
-        } else {
-            callback(new Error("Not allowed by CORS"))
-        }
-    },
-    credentials: true
+    origin:"https://ai-powered-interview-preparations.netlify.app/",
+    credentials:true
+
 }))
 // require all the routes here 
 const authRouter = require("./routes/auth.routes.js")
