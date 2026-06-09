@@ -11,9 +11,13 @@ connectToDB()
 
 
 
-app.listen(3000,()=>{
-    console.log(`server is running on port ${3000}`)
-})
+if (!process.env.VERCEL) {
+    app.listen(3000,()=>{
+        console.log(`server is running on port ${3000}`)
+    })
+}
+
+module.exports = app
 
 
 
