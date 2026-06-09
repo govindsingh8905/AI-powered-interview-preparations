@@ -10,7 +10,7 @@ app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 app.use(cookieParser())
 app.use(cors({
-    origin:"https://ai-powered-interview-preparations.netlify.app/",
+    origin:"https://ai-powered-interview-preparations.netlify.app",
     credentials:true
 
 }))
