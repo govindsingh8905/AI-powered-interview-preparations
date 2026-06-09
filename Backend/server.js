@@ -7,7 +7,13 @@ connectToDB()
 
 
 //generateInterviewReport({resume, jobDescription, selfDescription})
+app.get('/',(req,res)=>{
+    res.send({
+        activeStatus:true,
+        error:false,
 
+    })
+})
 
 
 
