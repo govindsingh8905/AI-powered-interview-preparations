@@ -20,16 +20,14 @@ async function authUser(req,res,next){
     try {
         const decoded = jwt.verify(token,process.env.JWT_SECRET)
         
-        req.user=decoded
-        next()
+        req.user=decoded // new user me set kr dega 
+        next() // ye sari details ko aage bhej dega 
 
     } catch (error) {
         return res.status(401).json({
             message:"invalid token"
         })
     }
-    // jwt_verify kya krta h --> token verify krne liye aur uss token se data nikalne ke liye
-    
-    // jwt_verify--> signature part ko check krti h krti h agar token galat hota h ya token expire hota h toh 
+   
 }
 module.exports={authUser}

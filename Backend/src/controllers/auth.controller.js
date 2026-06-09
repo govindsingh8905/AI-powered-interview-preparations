@@ -8,54 +8,54 @@ const tokenblacklistmodel  = require("../models/blacklist.model.js")
  * @description register a new user
  * @access public
  */
-// register controller donee
 async function registerUserController(req,res){  // 
-const {username,email,password}=req.body
-if(!username || !email|| !password){
-    return res.status(400).json({
-        message:"please provide username,email and password"
-    })
-}
-const isUserAlreadyExists = await userModel.findOne({ // business logic mvc pattern 
-    $or: [{username},{email}] // haar ek object ek condition ke denote krti h 
-    // agar koi username milta h toh ye check krna pdega ki usrname exist krta h ya nhi 
-})
+    try {
+        const {username,email,password} = req.body || {} // ye e mail and password jo user ne dia h 
+        if(!username || !email|| !password){
+            return res.status(400).json({
+                message:"please provide username,email and password"
+            })
+        }
+        const isUserAlreadyExists = await userModel.findOne({ // business logic mvc pattern 
+            $or: [{username},{email}] // haar ek object ek condition ke denote krti h 
+            // agar koi username milta h toh ye check krna pdega ki usrname exist krta h ya nhi 
+        })
 
-if(isUserAlreadyExists){
+        if(isUserAlreadyExists){
+            return res.status(400).json({
+                message:"Account already exists with this email address or username"
+            })
+        }
+        const hash = await bcrypt.hash(password,10) // password data base me encrypt form me save hoga na ki dirct save 
 
-    return res.status(400).json({
-        message:"Account already exists with this email address or username"
+        const user = await userModel.create({
+            username,
+            email,
+            password:hash
+        })
 
-    })
-}
-const hash = await bcrypt.hash(password,10)
+        const token =jwt.sign(
+            {id:user._id,username:user.username},
+            process.env.JWT_SECRET,
+            {expiresIn:"1d"}
+        )
 
-const user = await userModel.create({
-    username,
-    email,
-    password:hash
- 
-})
+        res.cookie("token",token)
 
-const token =jwt.sign(
-    {id:user._id,username:user.username},
-    process.env.JWT_SECRET,
-    {expiresIn:"1d"}
-)
-
-res.cookie("token",token)
-
-res.status(201).json({
-    message:"user regiter succesfully!",
-    user:{
-        id:user._id,
-        username:user.username,
-        email:user.email
+        return res.status(201).json({
+            message:"user register successfully!",
+            user:{
+                id:user._id,
+                username:user.username,
+                email:user.email
+            }
+        })
+    } catch (error) {
+        return res.status(500).json({
+            message: "Internal server error",
+            error: error.message
+        })
     }
-})
-
-
-
 }
 
 /**
@@ -68,17 +68,19 @@ res.status(201).json({
 
 async function loginUserController(req, res) { // ye padhnaa h !!!!!!!!!!!
     try {
-        const { email, password } = req.body
+        const { email, password } = req.body || {}
 
         const user = await userModel.findOne({ email })
 
-        if (!user) {
+        if (!user) { // agRar user nhi mila toh 
             return res.status(400).json({
                 message: "Invalid email and password"
             })
         }
 
-        const isPasswordValid = await bcrypt.compare(password, user.password)
+        const isPasswordValid = await bcrypt.compare(password, user.password) // ye check krta h ki password jpo database me save h match krta h kya given password se 
+        // password --> h jo req body see aaya h 
+        // user.password --> h jo database me save h
 
         if (!isPasswordValid) {
             return res.status(400).json({
@@ -141,7 +143,7 @@ async function logoutusercontroller(req,res){
 
 async function getMeController(req, res) {
     try {
-        const user = await userModel.findById(req.user.id);
+        const user = await userModel.findById(req.user.id); 
 
         if (!user) {
             return res.status(404).json({ message: "User not found" });

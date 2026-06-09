@@ -58,4 +58,4 @@ I am currently working on projects like ConnectSphere and continuously improving
 I am looking for opportunities where I can learn, grow, and contribute to meaningful products.
 `;
 
-module.exports = { resume, jobDescription, selfDescription };
+module.exports = { resume, jobDescription, selfDescription }

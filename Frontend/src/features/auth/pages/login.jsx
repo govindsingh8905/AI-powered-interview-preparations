@@ -18,7 +18,11 @@ const login = () => {
     }
 
     if(loading){
-        return(<main><h1>Loading...</h1></main>)
+        return(
+          <main style={{ padding: '2rem' }}>
+            <h1>Loading...</h1>
+          </main>
+        )
     }
   return (
     <main>

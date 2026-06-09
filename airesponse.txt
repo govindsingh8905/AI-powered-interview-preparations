@@ -1,0 +1,93 @@
+{
+  "matchscore": 88,
+  "technicalQuestions": [
+    {
+      "question": "Can you explain the flow of authentication using JWT in your ConnectSphere project?",
+      "intention": "To verify the candidate's practical understanding of security and session management in a full-stack environment.",
+      "answer": "The candidate should describe the process of a user logging in, the server generating a signed token, sending it to the client, storing it (e.g., in localStorage or cookies), and including it in the Authorization header for subsequent API requests. They should mention the header, payload, and signature components of the JWT."
+    },
+    {
+      "question": "How did you implement the AI logic in your Resume Analyzer? What specific NLP concepts were involved?",
+      "intention": "To assess the candidate's depth of knowledge in GenAI and NLP as mentioned in their resume.",
+      "answer": "The candidate should mention specific libraries used (like LangChain, OpenAI API, or Python NLTK/SpaCy), how they parsed the PDF/Text, and how the 'improvement suggestions' were generated (e.g., keyword matching or LLM prompting)."
+    },
+    {
+      "question": "What are the advantages of using MongoDB over MySQL for a networking platform like ConnectSphere?",
+      "intention": "To evaluate the candidate's understanding of database selection and data modeling.",
+      "answer": "The candidate should talk about schema flexibility (handling diverse user data), scalability (horizontal scaling), and the ease of storing hierarchical data (like user profiles and connections) in a JSON-like format."
+    }
+  ],
+  "behavioralQuestion": [
+    {
+      "question": "Tell me about a time when you faced a major bug during the development of your startup project. How did you debug it?",
+      "intention": "To understand the candidate's problem-solving approach and persistence.",
+      "answer": "Focus on the STAR method (Situation, Task, Action, Result). Mention using tools like VS Code debugger, Postman for API testing, or console logging, and the eventual resolution and learning."
+    },
+    {
+      "question": "As a fresher, how do you manage your time when learning a new technology like GenAI alongside your college curriculum?",
+      "intention": "To assess self-motivation, time management, and passion for continuous learning.",
+      "answer": "The candidate should describe their learning routine, use of online resources (documentation, YouTube, Coursera), and how they apply theoretical knowledge to hands-on projects like the Resume Analyzer."
+    }
+  ],
+  "skillsGaps": [
+    {
+      "skills": "Cloud Deployment (AWS/Azure/GCP)",
+      "severity": "medium"
+    },
+    {
+      "skills": "Unit Testing (Jest/Mocha)",
+      "severity": "low"
+    },
+    {
+      "skills": "Advanced System Design concepts",
+      "severity": "medium"
+    }
+  ],
+  "preparationplan": [
+    {
+      "day": "Day 1",
+      "focus": "Frontend Deep Dive",
+      "tasks": [
+        "Review React hooks (useEffect, useContext, useMemo).",
+        "Practice building a responsive UI component using Tailwind CSS.",
+        "Revise state management principles."
+      ]
+    },
+    {
+      "day": "Day 2",
+      "focus": "Backend & API Design",
+      "tasks": [
+        "Build a sample CRUD API using Express.js.",
+        "Implement Middleware for error handling and logging.",
+        "Test API endpoints using Postman environment variables."
+      ]
+    },
+    {
+      "day": "Day 3",
+      "focus": "Databases & Security",
+      "tasks": [
+        "Practice complex MongoDB aggregation queries.",
+        "Review JWT implementation and password hashing with Bcrypt.",
+        "Compare SQL vs NoSQL use cases."
+      ]
+    },
+    {
+      "day": "Day 4",
+      "focus": "Project Deep Dive & GenAI",
+      "tasks": [
+        "Review the codebase of the AI Resume Analyzer.",
+        "Prepare a 2-minute elevator pitch for each project.",
+        "Read about basic LLM integration and Prompt Engineering."
+      ]
+    },
+    {
+      "day": "Day 5",
+      "focus": "Mock Interview & Soft Skills",
+      "tasks": [
+        "Practice the STAR method for behavioral questions.",
+        "Conduct a mock technical interview focusing on MERN stack.",
+        "Review common HR questions for freshers."
+      ]
+    }
+  ]
+}
