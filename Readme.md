@@ -259,48 +259,11 @@ Starts the production server
 
 npm test
 Runs the test suite
-```
-
-## Installation and Running
-
-### Quick Start Guide
-
-Step 1: Clone or download the project
-```bash
-cd /path/to/Gen_Ai_project
-```
-
-Step 2: Install and run Backend (Terminal 1)
-```bash
-cd Backend
-npm install
-npm run dev
-```
-
-The backend will start at http://localhost:5000
-
-Step 3: Install and run Frontend (Terminal 2)
-```bash
-cd Frontend
-npm install
-npm start
-```
-
-The frontend will start at http://localhost:3000
-
-The application will automatically open in your default browser at http://localhost:3000
-
-### Verification
-
-Verify both servers are running:
-- Frontend: http://localhost:3000 (should display the React application)
-- Backend: http://localhost:5000/api (should respond with API data)
+``
 
 ## API Documentation
 
 ### Base URL
-```
-http://localhost:5000/api
 ```
 
 ### Authentication Endpoints
