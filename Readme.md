@@ -377,21 +377,4 @@ Features include user authentication, real-time messaging, user profiles, and co
 
 An AI-powered tool for analyzing resumes and providing actionable suggestions for improvement. This project demonstrates the integration of Natural Language Processing and Machine Learning concepts with a web application.
 
-Features include resume parsing, skills analysis, and improvement recommendations.
 
-## Author
-
-Name: Govind Sharma
-Email: govind.sharma.dev@gmail.com
-Phone: +91 98XXXXXXX
-Location: Rajasthan, India
-LinkedIn: linkedin.com/in/govind-dev
-GitHub: github.com/govind-dev
-
-## License
-
-This project is open source and available under the MIT License. Feel free to use, modify, and distribute this project in accordance with the license terms.
-
-## Support and Contact
-
-For questions, bug reports, or suggestions, please contact via email or create an issue in the GitHub repository. Contributions and feedback are welcome.
