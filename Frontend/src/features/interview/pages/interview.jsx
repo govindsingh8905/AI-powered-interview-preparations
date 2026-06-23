@@ -70,7 +70,7 @@ const Interview = () => {
     },
     {
       id: 'prep',
-      title: '5-Day Plan',
+      title: '7-Day Plan',
       icon: Calendar,
       color: '#2ed573',
       count: report.preparationPlan.length,
