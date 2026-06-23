@@ -367,11 +367,7 @@ Password Security - Encrypted passwords and secure authentication
 
 ## Project Details
 
-### ConnectSphere Project
 
-ConnectSphere is a college networking platform built as part of this project that enables students to connect with each other, share experiences, and build professional networks.
-
-Features include user authentication, real-time messaging, user profiles, and community features.
 
 ### AI Resume Analyzer
 
